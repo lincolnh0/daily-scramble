@@ -1,6 +1,5 @@
 import seedrandom from "seedrandom";
 
-
 export default class Cube {
 
   cubeFaces: { [key: string]: string[][] };
@@ -18,12 +17,12 @@ export default class Cube {
    */
   constructor() {
     this.cubeFaces = {
-      "U": [
+      "D": [
         ["Y", "Y", "Y"],
         ["Y", "Y", "Y"],
         ["Y", "Y", "Y"],
       ],
-      "D": [
+      "U": [
         ["W", "W", "W"],
         ["W", "W", "W"],
         ["W", "W", "W"],
@@ -38,12 +37,12 @@ export default class Cube {
         ["B", "B", "B"],
         ["B", "B", "B"]
       ],
-      "L": [
+      "R": [
         ["R", "R", "R"],
         ["R", "R", "R"],
         ["R", "R", "R"],
       ],
-      "R": [
+      "L": [
         ["O", "O", "O"],
         ["O", "O", "O"],
         ["O", "O", "O"],
@@ -125,10 +124,10 @@ export default class Cube {
         "B": this.cubeFaces["D"][2],
       },
       "F": {
-        "L": transposedCubeFaces["L"][0],
-        "R": transposedCubeFaces["R"][2],
-        "T": this.cubeFaces["U"][0],
-        "B": this.cubeFaces["D"][2],
+        "L": transposedCubeFaces["L"][2],
+        "R": transposedCubeFaces["R"][0],
+        "T": this.cubeFaces["U"][2],
+        "B": this.cubeFaces["D"][0],
       },
       "R": {
         "L": transposedCubeFaces["F"][2],
@@ -323,13 +322,12 @@ export default class Cube {
           this.cubeFaces["D"][0] = edgeMapping[face]["R"];
           this.cubeFaces["D"] = this.transpose(this.cubeFaces["D"]);
         } else if (modifier === "'") {
-
           this.cubeFaces["U"] = transposedCubeFaces["U"];
-          this.cubeFaces["U"][0] = edgeMapping[face]["F"];
+          this.cubeFaces["U"][0] = edgeMapping[face]["R"];
           this.cubeFaces["U"] = this.transpose(this.cubeFaces["U"]);
 
           this.cubeFaces["F"] = transposedCubeFaces["F"];
-          this.cubeFaces["F"][0] = edgeMapping[face]["D"];
+          this.cubeFaces["F"][0] = edgeMapping[face]["B"];
           this.cubeFaces["F"] = this.transpose(this.cubeFaces["F"]);
 
           this.cubeFaces["B"] = transposedCubeFaces["B"];
@@ -337,12 +335,12 @@ export default class Cube {
           this.cubeFaces["B"] = this.transpose(this.cubeFaces["B"]);
 
           this.cubeFaces["D"] = transposedCubeFaces["D"];
-          this.cubeFaces["D"][0] = edgeMapping[face]["B"].reverse();
+          this.cubeFaces["D"][0] = edgeMapping[face]["L"].reverse();
           this.cubeFaces["D"] = this.transpose(this.cubeFaces["D"]);
         } else if (modifier === "2") {
 
           this.cubeFaces["U"] = transposedCubeFaces["U"];
-          this.cubeFaces["U"][0] = edgeMapping[face]["D"];
+          this.cubeFaces["U"][0] = edgeMapping[face]["B"];
           this.cubeFaces["U"] = this.transpose(this.cubeFaces["U"]);
 
           this.cubeFaces["F"] = transposedCubeFaces["F"];
@@ -354,7 +352,7 @@ export default class Cube {
           this.cubeFaces["B"] = this.transpose(this.cubeFaces["B"]);
 
           this.cubeFaces["D"] = transposedCubeFaces["D"];
-          this.cubeFaces["D"][0] = edgeMapping[face]["U"];
+          this.cubeFaces["D"][0] = edgeMapping[face]["T"];
           this.cubeFaces["D"] = this.transpose(this.cubeFaces["D"]);
         }
     }
