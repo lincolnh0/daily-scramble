@@ -53,7 +53,6 @@ export default function RootLayout({
               <footer className="w-full flex-col text-center mx-auto border-t justify-center items-center">
 
                 <div className="flex gap-2 justify-between max-w-2xl px-10 mx-auto pt-8 text-sm">
-                  <Link className={"font-normal"} href={"/about"}>About</Link>
                   <Link className={"font-normal"} href={"/interactive"}>Interactive cube</Link>
                   <Link className={"font-normal"} href={"/leaderboard"}>Leaderboard</Link>
 
