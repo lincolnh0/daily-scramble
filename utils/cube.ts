@@ -15,7 +15,7 @@ export default class Cube {
   /**
    * Creates a new instance of the Cube class.
    */
-  constructor() {
+  constructor(initialScramble: string[] = []) {
     this.cubeFaces = {
       "D": [
         ["Y", "Y", "Y"],
@@ -47,6 +47,10 @@ export default class Cube {
         ["O", "O", "O"],
         ["O", "O", "O"],
       ],
+    }
+
+    if (initialScramble.length > 0) {
+      this.scramble(initialScramble);
     }
   }
 
@@ -85,7 +89,7 @@ export default class Cube {
    * Rotates adjacent faces to the face being rotated.
    * @param face The face being rotated.
    * @param modifier The modifier of the rotation.
-   * @protected
+   * @profile
    */
   protected rotateAdjacentFaces(face: string, modifier: string): void {
 
@@ -365,10 +369,13 @@ export default class Cube {
     });
   }
 
-  public static generateScramble(separator: boolean = false): string[] {
-    const currentDate = new Date();
-    const seed: string = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
-    const scrambledSeed = seedrandom(seed);
+  public static generateScramble(separator: boolean = false, seed: string = ""): string[] {
+    let scrambledSeed = seedrandom(seed);
+    if (!seed) {
+      const currentDate = new Date();
+      const dateSeed: string = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
+      scrambledSeed = seedrandom(dateSeed);
+    }
     const moves = ["U", "D", "L", "R", "F", "B"];
     const modifiers = ["", "'", "2"];
     const scramble = [];

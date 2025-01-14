@@ -1,28 +1,21 @@
 "use client";
-import {RefObject, useEffect, useRef, useState} from "react";
-import {Button} from "@/components/ui/button";
+import {RefObject, useRef, useState} from "react";
 import Cube from "@/utils/cube";
+import {Button} from "@/components/ui/button";
 
-export default function CubeViewer({scramble = []}: { scramble: string[] }) {
-  const cube: RefObject<Cube> = useRef(new Cube());
+interface CubeViewerProps {
+  scramble?: string[];
+  showControls?: boolean;
+}
+
+export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
+  const cube: RefObject<Cube> = useRef(new Cube(scramble));
   const [cubeFaces, setCubeFaces] = useState(cube.current.cubeFaces);
-
-
-  useEffect(() => {
-    cube.current.scramble(scramble);
-    const shallowCopy = JSON.parse(JSON.stringify(cube.current.cubeFaces));
-    setCubeFaces(shallowCopy);
-  }, []);
 
   const renderRotation = (move: string) => {
     cube.current.rotateFace(move);
     const shallowCopy = JSON.parse(JSON.stringify(cube.current.cubeFaces));
     setCubeFaces(shallowCopy);
-  }
-  const [currentFace, setCurrentFace] = useState("F");
-
-  const navigateFace = (direction: string) => {
-    setCurrentFace(direction);
   }
 
   return (
@@ -124,7 +117,18 @@ export default function CubeViewer({scramble = []}: { scramble: string[] }) {
             ))}
           </div>
         </div>
-
+        {showControls && (
+            <div className="flex flex-col gap-4 justify-center mt-20">
+              {["R", "L", "U", "D", "F", "B"].map((face) => (
+                  <div key={face} className="flex gap-4 justify-center">
+                    <Button onClick={() => renderRotation(`${face}`)}>{face}</Button>
+                    <Button onClick={() => renderRotation(`${face}'`)}>{face}'</Button>
+                    <Button onClick={() => renderRotation(`${face}2`)}>{face}2</Button>
+                  </div>
+              ))}
+            </div>
+        )
+        }
       </div>
   );
 };
