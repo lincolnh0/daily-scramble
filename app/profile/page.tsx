@@ -2,6 +2,9 @@ import {createClient} from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
 import UserSolvesTable from "@/components/user-solves-table";
 import UserStats from "@/components/user-stats";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
+import {Pencil} from "lucide-react"
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -26,7 +29,6 @@ export default async function ProfilePage() {
 
   if (profile_error) {
     console.error(profile_error);
-
   }
   const {
     data: solves,
@@ -46,7 +48,14 @@ export default async function ProfilePage() {
       <div className="flex-1 w-full flex flex-col gap-12">
 
         <div className="flex flex-col gap-2 items-start">
-          <h1 className="font-bold text-3xl mb-4">Hello {profile.display_name}</h1>
+          <div className="w-full flex gap-2 items-center justify-between">
+            <h1 className="font-bold text-3xl mb-4">Hello {profile?.display_name}</h1>
+            <Link href="/profile/edit">
+              <Button variant={"outline"}>
+                <Pencil size={12}/> <span className={"ml-2"}> Edit profile</span>
+              </Button>
+            </Link>
+          </div>
           <UserStats user_id={user.id}/>
         </div>
         <div className="min-w-full flex flex-col gap-4">
