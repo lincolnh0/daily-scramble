@@ -27,7 +27,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                   {grid.slice(0).reverse().map((cell, j) => (
                       <div
                           key={j}
-                          className="w-6 h-6"
+                          className="w-5 h-5"
                           style={{
                             backgroundColor: cube.current.faceColours[cell],
                           }}
@@ -42,7 +42,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                   {grid.map((cell, j) => (
                       <div
                           key={j}
-                          className="w-6 h-6"
+                          className="w-5 h-5"
                           style={{
                             backgroundColor: cube.current.faceColours[cell],
                           }}
@@ -59,7 +59,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                     {grid.map((cell, j) => (
                         <div
                             key={j}
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             style={{
                               backgroundColor: cube.current.faceColours[cell],
                             }}
@@ -75,7 +75,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                     {grid.map((cell, j) => (
                         <div
                             key={j}
-                            className="w-6 h-6 "
+                            className="w-5 h-5 "
                             style={{
                               backgroundColor: cube.current.faceColours[cell],
                             }}
@@ -91,7 +91,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                     {grid.map((cell, j) => (
                         <div
                             key={j}
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             style={{
                               backgroundColor: cube.current.faceColours[cell],
                             }}
@@ -107,7 +107,7 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
                   {grid.map((cell, j) => (
                       <div
                           key={j}
-                          className="w-6 h-6"
+                          className="w-5 h-5"
                           style={{
                             backgroundColor: cube.current.faceColours[cell],
                           }}
