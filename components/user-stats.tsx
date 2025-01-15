@@ -22,7 +22,7 @@ export default async function UserStats({user_id}: { user_id: string }) {
       .select("*")
       .eq("verifying_user", user_id);
 
-  const totalSolveTime = solves?.reduce((acc, solve) => acc + solve.solve_time, 0);
+  const fastestSolve = solves?.map((solve) => solve.solve_time).sort().reverse()[0];
 
   if (solves_error || verifications_error) {
     console.error(verifications_error);
@@ -40,8 +40,8 @@ export default async function UserStats({user_id}: { user_id: string }) {
         <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
           <Timer/>
           <div className="flex lg:gap-4 gap-2 items-baseline">
-            <span className="font-bold lg:text-2xl text-lg">{(totalSolveTime / (solves?.length || 1)).toFixed(2)} s</span>
-            <span className="lg:text-md text-sm">Avg. time</span>
+            <span className="font-bold lg:text-2xl text-lg">{fastestSolve} s</span>
+            <span className="lg:text-md text-sm">Fastest time</span>
           </div>
         </div>
         <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
