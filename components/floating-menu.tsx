@@ -2,14 +2,14 @@
 
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
-import {Cctv, ChartColumnIncreasing, Menu, User, House, Box} from "lucide-react"
+import {Cctv, Trophy, Menu, User, House, Box} from "lucide-react"
 import Link from "next/link"
 
 // Navigation items array
 const menuItems = [
   {name: "Profile", href: "/profile", icon: User},
   {name: "Interactive cube", href: "/interactive", icon: Box},
-  {name: "Leaderboard", href: "/leaderboard", icon: ChartColumnIncreasing},
+  {name: "Leaderboard", href: "/leaderboard", icon: Trophy},
   {name: "Verify", href: "/verify", icon: Cctv},
 ];
 
