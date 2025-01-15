@@ -32,23 +32,23 @@ export default async function UserStats({user_id}: { user_id: string }) {
       <div className="flex-1 w-full flex flex-col gap-4 justify-between">
         <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
           <Play/>
-          <div className="flex gap-4 items-baseline">
-            <span className="font-bold text-2xl">{solves?.length}</span>
-            <span className="">Solves</span>
+          <div className="flex lg:gap-4 gap-2 items-baseline">
+            <span className="font-bold lg:text-2xl text-lg">{solves?.length}</span>
+            <span className="lg:text-md text-sm">Solves</span>
           </div>
         </div>
         <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
           <Timer/>
-          <div className="flex gap-4 items-baseline">
-            <span className="font-bold text-2xl">{(totalSolveTime / (solves?.length || 1)).toFixed(2)} s</span>
-            <span className="">Avg. time</span>
+          <div className="flex lg:gap-4 gap-2 items-baseline">
+            <span className="font-bold lg:text-2xl text-lg">{(totalSolveTime / (solves?.length || 1)).toFixed(2)} s</span>
+            <span className="lg:text-md text-sm">Avg. time</span>
           </div>
         </div>
         <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
           <CheckCheck/>
-          <div className="flex gap-4 items-baseline">
-            <span className="font-bold text-2xl">{verifications?.length}</span>
-            <span className="">Verifications</span>
+          <div className="flex lg:gap-4 gap-2 items-baseline">
+            <span className="font-bold lg:text-2xl text-lg">{verifications?.length}</span>
+            <span className="lg:text-md text-sm">Verifications</span>
           </div>
         </div>
       </div>
