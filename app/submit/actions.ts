@@ -11,7 +11,7 @@ export const submitSolve = async (formData: FormData) => {
   const scramble = Cube.generateScramble().join("");
   const videoUrl = formData.get("video-url")?.toString();
 
-  if (!videoUrl?.includes("youtube.com") && !videoUrl?.includes("youtu.be")) {
+  if (videoUrl && !videoUrl?.includes("youtube.com") && !videoUrl?.includes("youtu.be")) {
     return encodedRedirect("error", "/submit", "Please provide a valid YouTube video URL.");
   }
 
