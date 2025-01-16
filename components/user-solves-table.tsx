@@ -1,4 +1,4 @@
-import {BadgeCheck, X} from "lucide-react"
+import {Clapperboard, Globe, Lock} from "lucide-react"
 import Link from "next/link";
 
 export default function UserSolvesTable({solves = []}: { solves: any[] | null }) {
@@ -23,16 +23,15 @@ export default function UserSolvesTable({solves = []}: { solves: any[] | null })
                 <td className="sm:px-2 md:px-4 lg:px-6 py-4">
                   {solve.scramble}
                 </td>
-                <td className="sm:px-2 md:px-4 lg:px-6 py-4">
+                <td className="sm:px-2 md:px-4 lg:px-6 py-4 ">
                   {solve.video_url ? (
                       <Link href={solve.video_url} target="_blank" rel="noreferrer">
-                        Watch
+                        <Clapperboard/>
                       </Link>
                   ) : null}
                 </td>
                 <td className="sm:px-2 md:px-4 lg:px-6 py-4 flex justify-center items-center">
-                  {solve.public ? <BadgeCheck/> : <X/>}
-
+                  {solve.public ? <Globe/> : <Lock/>}
                 </td>
               </tr>
           ))}

@@ -1,6 +1,6 @@
 import {filterLeaderboard, getLeaderboard} from "@/app/leaderboard/actions";
 import {Button} from "@/components/ui/button";
-import {Flag} from "lucide-react";
+import {Clapperboard, Flag} from "lucide-react";
 import Link from "next/link";
 import Cube from "@/utils/cube";
 import {Input} from "@/components/ui/input";
@@ -47,7 +47,7 @@ export default async function Leaderboard(props: { searchParams: Promise<Leaderb
                   <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.solve_time}s</td>
                   <td className="sm:px-2 md:px-4 lg:px-6 py-4">
                     <Link href={entry.video_url}>
-                      <Button variant={"ghost"}>Watch</Button>
+                      <Button variant={"ghost"}><Clapperboard size={16}/></Button>
                     </Link>
                   </td>
                   <td className="sm:px-2 md:px-4 lg:px-6 py-4">

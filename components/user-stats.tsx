@@ -3,15 +3,23 @@ import {createClient} from "@/utils/supabase/server";
 
 export default async function UserStats({user_id}: { user_id: string }) {
   const supabase = await createClient();
+  const {data: {user}} = await supabase.auth.getUser();
+
+  const solveQuery = supabase
+      .schema("daily_scramble")
+      .from("solves")
+      .select("*")
+      .eq("user", user_id)
+      .order("created_at", {ascending: false});
+
+  if (user_id !== user?.id) {
+    solveQuery.eq("public", true);
+  }
 
   const {
     data: solves,
     error: solves_error
-  } = await supabase
-      .schema("daily_scramble")
-      .from("solves")
-      .select("*")
-      .eq("user", user_id);
+  } = await solveQuery;
 
   const {
     data: verifications,
@@ -51,13 +59,13 @@ export default async function UserStats({user_id}: { user_id: string }) {
             <Trophy/>
             <div className="flex lg:gap-4 gap-2 items-baseline">
               <span className="lg:text-md text-sm">Top ranked solve</span>
-              <span className="font-bold lg:text-2xl text-lg"># 2</span>
+              <span className="font-bold lg:text-2xl text-lg">Pending</span>
             </div>
           </div>
           <div className="flex-1 flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
             <MonitorCheck/>
             <div className="flex lg:gap-4 gap-2 items-baseline">
-              <span className="lg:text-md text-sm">Verifications</span>
+              <span className="lg:text-md text-sm">Solves verified</span>
               <span className="font-bold lg:text-2xl text-lg">{verifications?.length}</span>
             </div>
           </div>

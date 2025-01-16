@@ -10,7 +10,7 @@ export default async function Verify() {
   const {solve, solveError} = await getUnverifiedSolve();
   return (
       <div className="flex flex-col justify-center items-center max-w-2xl gap-12 font-mono">
-        <h1 className="text-4xl font-bold mb-10 text-center">Community verification</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold mb-10 text-center">Community verification</h1>
         <div className={"flex flex-col gap-2"}>
           <p>
             The daily scramble runs on a community approval system. Here you can help verify the legitimacy other

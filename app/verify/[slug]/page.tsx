@@ -39,7 +39,7 @@ export default async function VerifySolve({params, searchParams}: {
   const interactiveParams = {
     pathname: "/interactive",
     query: {
-      scramble: JSON.stringify(solve?.scramble.split(" ")),
+      date: solve.created_at.split("T")[0],
     },
   };
 

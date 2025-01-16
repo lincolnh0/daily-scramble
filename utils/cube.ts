@@ -369,8 +369,14 @@ export default class Cube {
     });
   }
 
-  public static generateScramble(seed: string = "", separator: boolean = false): string[] {
-    let scrambledSeed = seedrandom(seed);
+  public static generateScramble(seed: string | Date = "", separator: boolean = false): string[] {
+    let scrambledSeed;
+    if (typeof seed === "string") {
+      scrambledSeed = seedrandom(seed);
+    } else {
+      const dateSeed: string = `${seed.getFullYear()}${seed.getMonth()}${seed.getDate()}`;
+      scrambledSeed = seedrandom(dateSeed);
+    }
     if (!seed) {
       const currentDate = new Date();
       const dateSeed: string = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
