@@ -39,13 +39,14 @@ export default async function EditProfile(props: {
           </div>
           <div className={"flex flex-col gap-4"}>
             <Label htmlFor="display-name" className="">Display name</Label>
-            <div>
+            <div >
               <Input
                   name="display-name"
-                  pattern="[A-Za-z0-9_]{1,15}"
+                  pattern="[A-Za-z0-9_]{4,15}"
                   required
                   defaultValue={profile?.display_name ?? ""}
               />
+              <p className={"text-xs text-gray-500 mt-2 italic"}>Letters, numbers and underscore only</p>
             </div>
           </div>
         </div>
