@@ -7,6 +7,7 @@ import Cube from "@/utils/cube";
 import {submitSolve} from "@/app/submit/actions";
 import {FormMessage, Message} from "@/components/form-message";
 import {Checkbox} from "@/components/ui/checkbox";
+import VideoRequirements from "@/components/video-requirements";
 
 export default async function Submit(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
@@ -21,7 +22,7 @@ export default async function Submit(props: { searchParams: Promise<Message> }) 
   }
 
 
-  const todayScramble = Cube.generateScramble().join("");
+  const todayScramble = Cube.generateScramble().join(" ");
 
   return (
       <form className="flex-1 flex flex-col min-w-64">
@@ -41,14 +42,7 @@ export default async function Submit(props: { searchParams: Promise<Message> }) 
           </div>
           <div className={"flex-col flex gap-3 mb-3"}>
             <Input name="video-url" className={"mb-0"} placeholder="https://youtu.be/7Ron6MN45LY"/>
-            <div className="text-xs text-gray-500 px-2">
-              <p>Make sure your video contains the following:</p>
-              <ul className="list-disc p-2">
-                <li className={"mb-1"}>An initial display of the scramble</li>
-                <li className={"mb-1"}>A time keeping device</li>
-                <li className={"mb-1"}>A running stopwatch in the background</li>
-              </ul>
-            </div>
+            <VideoRequirements readOnly={true}/>
 
             <div className={"flex gap-2 items-center"}>
               <Checkbox name="public" className="text-sm"/>

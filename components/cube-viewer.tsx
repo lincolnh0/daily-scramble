@@ -5,21 +5,33 @@ import {Button} from "@/components/ui/button";
 
 interface CubeViewerProps {
   scramble?: string[];
-  showControls?: boolean;
+  scrambleCallback?: (move: string) => void;
+  resetCallback?: () => void;
 }
 
-export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
+export default function CubeViewer({scramble, scrambleCallback, resetCallback}: CubeViewerProps) {
   const cube: RefObject<Cube> = useRef(new Cube(scramble));
   const [cubeFaces, setCubeFaces] = useState(cube.current.cubeFaces);
 
   const renderRotation = (move: string) => {
+    if (scrambleCallback) {
+      scrambleCallback(move);
+    }
     cube.current.rotateFace(move);
     const shallowCopy = JSON.parse(JSON.stringify(cube.current.cubeFaces));
     setCubeFaces(shallowCopy);
   }
 
+  const resetCube = () => {
+    cube.current = new Cube();
+    setCubeFaces(cube.current.cubeFaces);
+    if (resetCallback) {
+      resetCallback();
+    }
+  }
+
   return (
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col gap-2 bg-black p-4">
             {cubeFaces["B"].slice(0).reverse().map((grid, i) => (
@@ -117,15 +129,16 @@ export default function CubeViewer({scramble, showControls}: CubeViewerProps) {
             ))}
           </div>
         </div>
-        {showControls && (
-            <div className="flex flex-col gap-4 justify-center mt-20">
+        {scrambleCallback && (
+            <div className="flex flex-col gap-4 justify-center mt-20 w-fit items-center">
               {["R", "L", "U", "D", "F", "B"].map((face) => (
                   <div key={face} className="flex gap-4 justify-center">
-                    <Button onClick={() => renderRotation(`${face}`)}>{face}</Button>
-                    <Button onClick={() => renderRotation(`${face}'`)}>{face}'</Button>
-                    <Button onClick={() => renderRotation(`${face}2`)}>{face}2</Button>
+                    <Button className={"w-12"} onClick={() => renderRotation(`${face}`)}>{face}</Button>
+                    <Button className={"w-12"} onClick={() => renderRotation(`${face}'`)}>{face}'</Button>
+                    <Button className={"w-12"} onClick={() => renderRotation(`${face}2`)}>{face}2</Button>
                   </div>
               ))}
+              <Button className={"w-full"} onClick={resetCube}>Reset</Button>
             </div>
         )
         }
