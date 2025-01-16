@@ -68,14 +68,14 @@ export default async function VerifySolve({params, searchParams}: {
                   <div className="flex gap-2 justify-center py-6">
                       <Button size={"lg"}
                               type={"submit"}
-                              data-umami-event={"reject-solve"}
+                              data-umami-event={"Reject solve"}
                               formAction={rejectSolveWithId}
                               className={"flex-1 uppercase text-white shadow-lg flex gap-2 text-md bg-red-500 hover:bg-red-400 hover:font-bold"}>
                           <X/>
                       </Button>
                       <Button size={"lg"}
                               type={"submit"}
-                              data-umami-event={"approve-solve"}
+                              data-umami-event={"Approve solve"}
                               formAction={approveSolveWithId}
                               className={"flex-1 uppercase text-white shadow-lg flex gap-2 text-md bg-green-500 hover:bg-green-400 hover:font-bold"}>
                           <Check/>

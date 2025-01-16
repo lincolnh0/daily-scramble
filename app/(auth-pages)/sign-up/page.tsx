@@ -38,7 +38,7 @@ export default async function Signup(props: {
             minLength={6}
             required
           />
-          <SubmitButton data-umami-event={"sign-up"} formAction={signUpAction} pendingText="Signing up...">
+          <SubmitButton data-umami-event={"Sign up"} formAction={signUpAction} pendingText="Signing up...">
             Sign up
           </SubmitButton>
           <FormMessage message={searchParams} />

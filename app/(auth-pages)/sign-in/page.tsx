@@ -34,7 +34,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
           placeholder="Your password"
           required
         />
-        <SubmitButton data-umami-event={"sign-in"} pendingText="Signing In..." formAction={signInAction}>
+        <SubmitButton data-umami-event={"Sign in"} pendingText="Signing In..." formAction={signInAction}>
           Sign in
         </SubmitButton>
         <FormMessage message={searchParams} />
