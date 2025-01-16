@@ -18,8 +18,7 @@ export default function UserSolvesTable({solves = []}: { solves: any[] | null })
           <tbody>
           {solves?.map((solve) => (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-900" key={solve.id}>
-                <td scope="row"
-                    className="sm:px-2 md:px-4 lg:px-6 py-4">{solve.created_at.split("T")[0]}</td>
+                <td className="sm:px-2 md:px-4 lg:px-6 py-4">{solve.created_at.split("T")[0]}</td>
                 <td className="sm:px-2 md:px-4 lg:px-6 py-4">{solve.solve_time}s</td>
                 <td className="sm:px-2 md:px-4 lg:px-6 py-4">
                   {solve.scramble}

@@ -8,7 +8,7 @@ export const submitSolve = async (formData: FormData) => {
   const supabase = await createClient();
 
   const solveTime = formData.get("solve-time");
-  const scramble = Cube.generateScramble().join("");
+  const scramble = Cube.generateScramble().join(" ");
   const videoUrl = formData.get("video-url")?.toString();
   const submitToLeaderboard = formData.get("public") === "on";
 

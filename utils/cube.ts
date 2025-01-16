@@ -369,7 +369,7 @@ export default class Cube {
     });
   }
 
-  public static generateScramble(separator: boolean = false, seed: string = ""): string[] {
+  public static generateScramble(seed: string = "", separator: boolean = false): string[] {
     let scrambledSeed = seedrandom(seed);
     if (!seed) {
       const currentDate = new Date();

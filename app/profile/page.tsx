@@ -48,7 +48,7 @@ export default async function ProfilePage() {
       <div className="flex-1 w-full flex flex-col gap-12">
         <div className="flex flex-col gap-2 items-start">
           <div className="w-full flex gap-2 items-center justify-between">
-            <h1 className="font-bold text-xl lg:text-3xl my-4">Hello {profile?.display_name}</h1>
+            <h1 className="font-bold text-xl lg:text-3xl my-4">Hello {profile?.name}</h1>
             <Link href="/profile/edit">
               <Button variant={"outline"}>
                 <Pencil size={12}/> <span className={"ml-2 lg:text-md text-xs"}> Edit profile</span>

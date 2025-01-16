@@ -2,7 +2,7 @@ import CubeViewer from "@/components/cube-viewer";
 import Cube from "@/utils/cube";
 
 export default function Header() {
-  const scramble = Cube.generateScramble(true);
+  const scramble = Cube.generateScramble("", true);
 
   return (
       <div className="flex flex-col gap-16 items-center">
