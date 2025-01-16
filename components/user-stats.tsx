@@ -1,4 +1,4 @@
-import {CheckCheck, Play, Timer} from "lucide-react";
+import {MonitorCheck, Play, Timer, Trophy} from "lucide-react";
 import {createClient} from "@/utils/supabase/server";
 
 export default async function UserStats({user_id}: { user_id: string }) {
@@ -30,25 +30,36 @@ export default async function UserStats({user_id}: { user_id: string }) {
 
   return (
       <div className="flex-1 w-full flex flex-col gap-4 justify-between">
-        <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
-          <Play/>
-          <div className="flex lg:gap-4 gap-2 items-baseline">
-            <span className="font-bold lg:text-2xl text-lg">{solves?.length}</span>
-            <span className="lg:text-md text-sm">Solves</span>
+        <div className={"flex flex-col sm:flex-row gap-4"}>
+          <div className="flex flex-1 border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
+            <Play/>
+            <div className="flex lg:gap-4 gap-2 items-baseline">
+              <span className="lg:text-md text-sm">Total Solves</span>
+              <span className="font-bold lg:text-2xl text-lg">{solves?.length}</span>
+            </div>
+          </div>
+          <div className="flex flex-1 border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
+            <Timer/>
+            <div className="flex lg:gap-4 gap-2 items-baseline">
+              <span className="lg:text-md text-sm">Fastest time</span>
+              <span className="font-bold lg:text-2xl text-lg">{fastestSolve} s</span>
+            </div>
           </div>
         </div>
-        <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
-          <Timer/>
-          <div className="flex lg:gap-4 gap-2 items-baseline">
-            <span className="font-bold lg:text-2xl text-lg">{fastestSolve} s</span>
-            <span className="lg:text-md text-sm">Fastest time</span>
+        <div className={"flex flex-col sm:flex-row gap-4"}>
+          <div className="flex-1 flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
+            <Trophy/>
+            <div className="flex lg:gap-4 gap-2 items-baseline">
+              <span className="lg:text-md text-sm">Top ranked solve</span>
+              <span className="font-bold lg:text-2xl text-lg"># 2</span>
+            </div>
           </div>
-        </div>
-        <div className="flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
-          <CheckCheck/>
-          <div className="flex lg:gap-4 gap-2 items-baseline">
-            <span className="font-bold lg:text-2xl text-lg">{verifications?.length}</span>
-            <span className="lg:text-md text-sm">Verifications</span>
+          <div className="flex-1 flex border-2 shadow rounded-2xl p-8 gap-2 items-center justify-between">
+            <MonitorCheck/>
+            <div className="flex lg:gap-4 gap-2 items-baseline">
+              <span className="lg:text-md text-sm">Verifications</span>
+              <span className="font-bold lg:text-2xl text-lg">{verifications?.length}</span>
+            </div>
           </div>
         </div>
       </div>

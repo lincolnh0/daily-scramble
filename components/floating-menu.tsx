@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
-import {Cctv, Trophy, Menu, User, House, Box} from "lucide-react"
+import {MonitorCheck, Menu, User, Box, Trophy} from "lucide-react"
 import Link from "next/link"
 
 // Navigation items array
@@ -10,7 +10,7 @@ const menuItems = [
   {name: "Profile", href: "/profile", icon: User},
   {name: "Interactive cube", href: "/interactive", icon: Box},
   {name: "Leaderboard", href: "/leaderboard", icon: Trophy},
-  {name: "Verify", href: "/verify", icon: Cctv},
+  {name: "Verify", href: "/verify", icon: MonitorCheck},
 ];
 
 
@@ -39,7 +39,7 @@ export default function FloatingMenu() {
         </div>
         <div className="fixed bottom-5 right-5 md:right-10 scale-50 md:scale-100">
           <Button
-              className={"shadow-lg rounded-full py-7 bg-gradient-to-br  dark:from-gray-500 dark:to-gray-50 from-black to-gray-500 border-gray-500 border hover:scale-110 duration-300hover:from-gray-800 hover:to-gray-400 transition ease-in-out"}
+              className={"shadow-lg text-foreground rounded-full py-7 bg-gradient-to-br  bg-gray-100 hover:bg-gray-400 dark:bg-gray-800 dark:hover:bg-gray-500 border hover:scale-110 duration-300 transition ease-in-out"}
               onClick={toggleMobileMenu}
           >
             <Menu/>

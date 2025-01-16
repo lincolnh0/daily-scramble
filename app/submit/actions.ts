@@ -10,9 +10,14 @@ export const submitSolve = async (formData: FormData) => {
   const solveTime = formData.get("solve-time");
   const scramble = Cube.generateScramble().join("");
   const videoUrl = formData.get("video-url")?.toString();
+  const submitToLeaderboard = formData.get("public") === "on";
 
   if (videoUrl && !videoUrl?.includes("youtube.com") && !videoUrl?.includes("youtu.be")) {
     return encodedRedirect("error", "/submit", "Please provide a valid YouTube video URL.");
+  }
+
+  if (submitToLeaderboard && !videoUrl) {
+    return encodedRedirect("error", "/submit", "Please provide a video URL to submit to the leaderboard.");
   }
 
   const { data: { user } } = await supabase.auth.getUser();
@@ -22,6 +27,7 @@ export const submitSolve = async (formData: FormData) => {
     scramble: scramble,
     video_url: videoUrl,
     user: user?.id,
+    public: submitToLeaderboard,
   }]);
 
   if (error) {

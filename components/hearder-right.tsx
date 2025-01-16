@@ -2,13 +2,13 @@ import { signOutAction } from "@/app/actions";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { createClient } from "@/utils/supabase/server";
-import {Box, Cctv, Trophy, House, User} from "lucide-react";
+import {Box, MonitorCheck, Trophy, User} from "lucide-react";
 
 const menuItems = [
   {name: "Profile", href: "/profile", icon: User},
   {name: "Interactive cube", href: "/interactive", icon: Box},
   {name: "Leaderboard", href: "/leaderboard", icon: Trophy},
-  {name: "Verify", href: "/verify", icon: Cctv},
+  {name: "Verify", href: "/verify", icon: MonitorCheck},
 ];
 export default async function HeaderRight() {
   const supabase = await createClient();
