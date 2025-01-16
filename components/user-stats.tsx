@@ -30,8 +30,7 @@ export default async function UserStats({user_id}: { user_id: string }) {
       .select("*")
       .eq("verifying_user", user_id);
 
-  const fastestSolve = solves?.map((solve) => solve.solve_time).sort().reverse()[0];
-
+  const fastestSolve = solves?.sort((a, b) => a.solve_time - b.solve_time).map((solve) => solve.solve_time)[0];
   if (solves_error || verifications_error) {
     console.error(verifications_error);
   }
