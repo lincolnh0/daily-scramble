@@ -28,38 +28,42 @@ export default async function Leaderboard(props: { searchParams: Promise<Leaderb
           <Input name="date-filter" type={"date"} defaultValue={searchParams.date}/>
           <Button formAction={filterLeaderboard} type={"submit"}>Filter</Button>
         </form>
-        <div>
-          <table className="table-auto w-full text-left font-sans">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr className={"text-center"}>
-              <th className="sm:px-2 md:px-4 lg:px-6 py-3">Rank</th>
-              <th className="sm:px-2 md:px-4 lg:px-6 py-3">User</th>
-              <th className="sm:px-2 md:px-4 lg:px-6 py-3">Time</th>
-              <th className="sm:px-2 md:px-4 lg:px-6 py-3">Video</th>
-              <th className="sm:px-2 md:px-4 lg:px-6 py-3">Report</th>
-            </tr>
-            </thead>
-            <tbody>
-            {leaderboard.map((entry, index) => (
-                <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-900">
-                  <td className="sm:px-2 md:px-4 lg:px-6 py-4 text-center">{index + 1}</td>
-                  <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.profile.display_name}</td>
-                  <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.solve_time}s</td>
-                  <td className="sm:px-2 md:px-4 lg:px-6 py-4">
-                    <Link href={entry.video_url}>
-                      <Button variant={"ghost"}><Clapperboard size={16}/></Button>
-                    </Link>
-                  </td>
-                  <td className="sm:px-2 md:px-4 lg:px-6 py-4">
-                    <Button variant={"ghost"}>
-                      <Flag size={16}/>
-                    </Button>
-                  </td>
+        {leaderboard.length > 0 ? (
+            <div>
+              <table className="table-auto w-full text-left font-sans">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr className={"text-center"}>
+                  <th className="sm:px-2 md:px-4 lg:px-6 py-3">Rank</th>
+                  <th className="sm:px-2 md:px-4 lg:px-6 py-3">User</th>
+                  <th className="sm:px-2 md:px-4 lg:px-6 py-3">Time</th>
+                  <th className="sm:px-2 md:px-4 lg:px-6 py-3">Video</th>
+                  <th className="sm:px-2 md:px-4 lg:px-6 py-3">Report</th>
                 </tr>
-            ))}
-            </tbody>
-          </table>
-        </div>
+                </thead>
+                <tbody>
+                {leaderboard.map((entry, index) => (
+                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-900">
+                      <td className="sm:px-2 md:px-4 lg:px-6 py-4 text-center">{index + 1}</td>
+                      <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.profile.display_name}</td>
+                      <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.solve_time}s</td>
+                      <td className="sm:px-2 md:px-4 lg:px-6 py-4">
+                        <Link href={entry.video_url}>
+                          <Button variant={"ghost"}><Clapperboard size={16}/></Button>
+                        </Link>
+                      </td>
+                      <td className="sm:px-2 md:px-4 lg:px-6 py-4">
+                        <Button variant={"ghost"}>
+                          <Flag size={16}/>
+                        </Button>
+                      </td>
+                    </tr>
+                ))}
+                </tbody>
+              </table>
+            </div>
+        ): (
+            <p>No verified solves yet.</p>
+        )}
       </div>
   )
 }
