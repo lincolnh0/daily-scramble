@@ -6,9 +6,10 @@ import Cube from "@/utils/cube";
 
 export default function Interactive() {
 
-  const searchParams = useSearchParams();
-  const date = new Date(searchParams.get("date") ?? "");
-  const [scramble, setScramble] = useState<string[]>(searchParams.get("date") ? Cube.generateScramble(date) : []);
+  // const searchParams = useSearchParams();
+  // const date = new Date(searchParams.get("date") ?? "");
+  // const dateSeed = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
+  const [scramble, setScramble] = useState<string[]>([]);
 
   const scrambleCallback = (move: string) => {
     setScramble([...scramble, move]);

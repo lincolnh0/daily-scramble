@@ -53,11 +53,11 @@ export default async function VerifySolve({params, searchParams}: {
         <h1 className="lg:text-4xl md:text-2xl text-lg font-bold text-center ">Solve #{solve.id}</h1>
         <div className={"flex flex-col gap-8 justify-center items-center"}>
           <h2 className="lg:text-2xl md:text-xl text-md ">{solve.scramble}</h2>
-          <Link href={interactiveParams}>
-            <Button>
-              View <ArrowRight/>
-            </Button>
-          </Link>
+          {/*<Link href={interactiveParams}>*/}
+          {/*  <Button>*/}
+          {/*    View <ArrowRight/>*/}
+          {/*  </Button>*/}
+          {/*</Link>*/}
 
         </div>
         <div className="flex flex-col gap-10 w-full">
