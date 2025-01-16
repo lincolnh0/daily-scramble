@@ -24,8 +24,8 @@ export default function FloatingMenu() {
   return (
       <div className={"lg:hidden"}>
         <div
-            className={`fixed my-4 origin-bottom right-5 sm:right-10 bottom-14 sm:bottom-20 flex transition flex-col gap-2 sm:gap-4 text-xs ${
-                isMobileMenuOpen ? "scale-50 sm:scale-100" : "scale-0"
+            className={`fixed my-4 origin-bottom right-5 sm:right-10 bottom-16 sm:bottom-20 flex transition flex-col gap-4 sm:gap-4 text-xs ${
+                isMobileMenuOpen ? "scale-75 sm:scale-100" : "scale-0"
             }`}>
 
           {menuItems.map((item, index) => (
@@ -37,7 +37,7 @@ export default function FloatingMenu() {
               </Link>
           ))}
         </div>
-        <div className="fixed bottom-5 right-5 sm:right-10 scale-50 sm:scale-100">
+        <div className="fixed bottom-5 right-5 sm:right-10 scale-75 sm:scale-100">
           <Button
               className={"shadow-lg text-foreground rounded-full py-7 bg-gray-100 hover:bg-gray-400 dark:bg-gray-800 dark:hover:bg-gray-500 border hover:scale-110 duration-300 transition ease-in-out"}
               onClick={toggleMobileMenu}
