@@ -53,6 +53,9 @@ export const getLeaderboard = async (scramble: string) => {
 
   return aboveThresholdSolves.map((solve: any) => {
     const profile = profiles?.find((profile: any) => profile.user === solve.user);
+    if (!profile) {
+      return {};
+    }
     return {
       ...solve,
       profile: profile,
