@@ -24,8 +24,8 @@ export default function UserSolvesTable({solves = []}: { solves: any[] | null })
                   {solve.scramble}
                 </td>
                 <td className="sm:px-2 md:px-4 lg:px-6 py-4 ">
-                  {solve.video_url ? (
-                      <Link href={solve.video_url} target="_blank" rel="noreferrer">
+                  {solve.video_id ? (
+                      <Link href={"https://youtu.be/" + solve.video_id} target="_blank" rel="noreferrer">
                         <Clapperboard/>
                       </Link>
                   ) : null}

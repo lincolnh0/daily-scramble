@@ -58,7 +58,7 @@ export const signInAction = async (formData: FormData) => {
       .schema("daily_scramble")
       .from("profiles")
       .select("*")
-      .eq("id", user?.id)
+      .eq("user", user?.id)
       .single();
 
   if (profileError) {

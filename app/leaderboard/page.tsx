@@ -19,7 +19,6 @@ export default async function Leaderboard(props: { searchParams: Promise<Leaderb
   }
   const leaderboard = await getLeaderboard(scramble);
 
-
   return (
       <div className="flex flex-col justify-center font-mono gap-12 items-center">
         <h1 className="lg:text-4xl md:text-2xl text-lg font-bold text-center">Leaderboard</h1>
@@ -47,7 +46,7 @@ export default async function Leaderboard(props: { searchParams: Promise<Leaderb
                       <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.profile.display_name}</td>
                       <td className="sm:px-2 md:px-4 lg:px-6 py-4">{entry.solve_time}s</td>
                       <td className="sm:px-2 md:px-4 lg:px-6 py-4">
-                        <Link href={entry.video_url}>
+                        <Link href={"https://youtu.be/" + entry.video_id}>
                           <Button variant={"ghost"}><Clapperboard size={16}/></Button>
                         </Link>
                       </td>

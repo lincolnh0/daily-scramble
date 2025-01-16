@@ -15,6 +15,14 @@ export const submitSolve = async (formData: FormData) => {
   if (videoUrl && !videoUrl?.includes("youtube.com") && !videoUrl?.includes("youtu.be")) {
     return encodedRedirect("error", "/submit", "Please provide a valid YouTube video URL.");
   }
+  let videoId = "";
+  if (videoUrl?.includes("youtu.be")) {
+    videoId = videoUrl.split("?")[0].split("/").reverse()[0];
+  } else if (videoUrl?.includes("youtube.com")) {
+    const queryParams = new URLSearchParams(videoUrl.split("?")[1]);
+    videoId = queryParams.get("v") ?? "";
+  }
+
 
   if (submitToLeaderboard && !videoUrl) {
     return encodedRedirect("error", "/submit", "Please provide a video URL to submit to the leaderboard.");
@@ -25,7 +33,7 @@ export const submitSolve = async (formData: FormData) => {
   const { error } = await supabase.schema("daily_scramble").from("solves").insert([{
     solve_time: solveTime,
     scramble: scramble,
-    video_url: videoUrl,
+    video_id: videoId,
     user: user?.id,
     public: submitToLeaderboard,
   }]);

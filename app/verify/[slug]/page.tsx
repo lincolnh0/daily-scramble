@@ -33,7 +33,7 @@ export default async function VerifySolve({params, searchParams}: {
     return redirect("/error")
   }
 
-  const videoID = solve?.video_url.split("?")[0].split("/").reverse()[0];
+  const videoID = solve?.video_id;
   const videoUrl = `https://www.youtube.com/embed/${videoID}?controls=0`;
 
   const interactiveParams = {
