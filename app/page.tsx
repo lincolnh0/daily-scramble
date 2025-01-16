@@ -8,7 +8,7 @@ export default async function Home() {
         <Hero/>
         <main className="flex-1 flex gap-6 px-4 justify-center">
           <Link href={"/submit"} >
-            <Button className={"text-lg px-6 py-8 rounded-2xl"}>
+            <Button className={"text-md px-6 py-8 rounded-lg font-mono"}>
               SUBMIT TIME
             </Button>
           </Link>

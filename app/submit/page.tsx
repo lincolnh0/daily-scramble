@@ -50,7 +50,7 @@ export default async function Submit(props: { searchParams: Promise<Message> }) 
             </div>
 
           </div>
-          <SubmitButton pendingText="Submitting..." formAction={submitSolve}>
+          <SubmitButton data-umami-event={"submit-solve"} pendingText="Submitting..." formAction={submitSolve}>
             Submit
           </SubmitButton>
           <FormMessage message={searchParams}/>
