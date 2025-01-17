@@ -5,8 +5,8 @@ import {ThemeProvider} from "next-themes";
 import Link from "next/link";
 import "./globals.css";
 import Script from "next/script";
-import {Button} from "@/components/ui/button";
 import FloatingMenu from "@/components/floating-menu";
+import {ReactNode} from "react";
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -26,7 +26,7 @@ const geistSans = Geist({
 export default function RootLayout({
                                      children,
                                    }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
       <html lang="en" className={geistSans.className} suppressHydrationWarning>

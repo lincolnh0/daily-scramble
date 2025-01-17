@@ -16,7 +16,9 @@ export const updateProfile = async (formData: FormData) => {
       display_name: displayName,
       user: user?.id,
     });
-    return redirect("/profile");
+    if (!error) {
+      return redirect("/profile");
+    }
 
   }
 

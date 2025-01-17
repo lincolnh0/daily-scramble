@@ -1,7 +1,7 @@
-import { signOutAction } from "@/app/actions";
+import {signOutAction} from "@/app/actions";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { createClient } from "@/utils/supabase/server";
+import {Button} from "./ui/button";
+import {createClient} from "@/utils/supabase/server";
 import {Box, MonitorCheck, Trophy, User} from "lucide-react";
 
 const menuItems = [

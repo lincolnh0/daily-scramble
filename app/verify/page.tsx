@@ -1,7 +1,6 @@
 import {Button} from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import Link from "next/link";
-import {createClient} from "@/utils/supabase/server";
 import {getUnverifiedSolve} from "@/app/verify/[slug]/actions";
 
 

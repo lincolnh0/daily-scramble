@@ -54,7 +54,7 @@ export const signInAction = async (formData: FormData) => {
   }
 
   const { data: {user} } = await supabase.auth.getUser();
-  const {data: profile, error: profileError} = await supabase
+  const {data: _, error: profileError} = await supabase
       .schema("daily_scramble")
       .from("profiles")
       .select("*")

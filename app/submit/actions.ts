@@ -1,7 +1,7 @@
 "use server";
 
-import { encodedRedirect } from "@/utils/utils";
-import { createClient } from "@/utils/supabase/server";
+import {encodedRedirect} from "@/utils/utils";
+import {createClient} from "@/utils/supabase/server";
 import Cube from "@/utils/cube";
 
 export const submitSolve = async (formData: FormData) => {

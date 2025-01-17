@@ -14,7 +14,6 @@ export const getUnverifiedSolve = async () => {
 
   const {
     data: verifications,
-    error: verificationsError,
   } = await supabase
       .schema("daily_scramble")
       .from("verifications")

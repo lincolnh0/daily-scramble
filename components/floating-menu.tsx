@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
-import {MonitorCheck, Menu, User, Box, Trophy} from "lucide-react"
+import {Box, Menu, MonitorCheck, Trophy, User} from "lucide-react"
 import Link from "next/link"
 
 // Navigation items array

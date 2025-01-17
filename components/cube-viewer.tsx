@@ -2,7 +2,6 @@
 import {RefObject, useRef, useState} from "react";
 import Cube from "@/utils/cube";
 import {Button} from "@/components/ui/button";
-import {useSearchParams} from "next/navigation";
 
 interface CubeViewerProps {
   scramble?: string[];
