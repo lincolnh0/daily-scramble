@@ -1,9 +1,10 @@
 "use client";
-import CubeViewer from "@/components/cube-viewer";
+import CubeViewer2d from "@/components/cube-viewer-2d";
 import {useSearchParams} from 'next/navigation'
 import {Suspense, useState} from "react";
 import Cube from "@/utils/cube";
 import {Timer} from "lucide-react";
+import CubeViewer from "@/components/cube-viewer";
 
 function Interactive() {
 
@@ -12,8 +13,10 @@ function Interactive() {
   const dateSeed = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
   const [scramble, setScramble] = useState<string[]>(searchParams.get("date") ? Cube.generateScramble(dateSeed) : []);
 
-  const scrambleCallback = (scramble: string[]) => {
-    setScramble(scramble);
+
+
+  const scrambleCallback = (move: string) => {
+    setScramble([...scramble, move]);
   }
 
   return (

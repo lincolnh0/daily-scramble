@@ -3,7 +3,7 @@ import seedrandom from "seedrandom";
 export default class Cube {
 
   cubeFaces: { [key: string]: string[][] };
-  faceColours: { [key: string]: string } = {
+  public static faceColours: { [key: string]: string } = {
     "Y": "yellow",
     "G": "green",
     "O": "coral",

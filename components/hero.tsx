@@ -1,5 +1,6 @@
-import CubeViewer from "@/components/cube-viewer";
+import CubeViewer2d from "@/components/cube-viewer-2d";
 import Cube from "@/utils/cube";
+import CubeViewer from "@/components/cube-viewer";
 
 export default function Header() {
   const scramble = Cube.generateScramble("", true);
