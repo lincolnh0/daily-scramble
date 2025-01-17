@@ -1,18 +1,19 @@
 "use client";
 import CubeViewer from "@/components/cube-viewer";
 import {useSearchParams} from 'next/navigation'
-import { useState} from "react";
+import {Suspense, useState} from "react";
 import Cube from "@/utils/cube";
+import {Timer} from "lucide-react";
 
-export default function Interactive() {
+function Interactive() {
 
-  // const searchParams = useSearchParams();
-  // const date = new Date(searchParams.get("date") ?? "");
-  // const dateSeed = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
-  const [scramble, setScramble] = useState<string[]>([]);
+  const searchParams = useSearchParams();
+  const date = new Date(searchParams.get("date") ?? "");
+  const dateSeed = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
+  const [scramble, setScramble] = useState<string[]>(searchParams.get("date") ? Cube.generateScramble(dateSeed) : []);
 
-  const scrambleCallback = (move: string) => {
-    setScramble([...scramble, move]);
+  const scrambleCallback = (scramble: string[]) => {
+    setScramble(scramble);
   }
 
   return (
@@ -25,5 +26,13 @@ export default function Interactive() {
       </div>
   )
 
+}
 
+
+export default function InteractivePage() {
+  return (
+      <Suspense fallback={<Timer/>}>
+        <Interactive/>
+      </Suspense>
+  )
 }

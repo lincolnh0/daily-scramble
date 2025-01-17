@@ -2,10 +2,11 @@
 import {RefObject, useRef, useState} from "react";
 import Cube from "@/utils/cube";
 import {Button} from "@/components/ui/button";
+import {useSearchParams} from "next/navigation";
 
 interface CubeViewerProps {
   scramble?: string[];
-  scrambleCallback?: (move: string) => void;
+  scrambleCallback?: (scramble: string[]) => void;
   resetCallback?: () => void;
 }
 
@@ -14,12 +15,12 @@ export default function CubeViewer({scramble, scrambleCallback, resetCallback}: 
   const [cubeFaces, setCubeFaces] = useState(cube.current.cubeFaces);
 
   const renderRotation = (move: string) => {
-    if (scrambleCallback) {
-      scrambleCallback(move);
-    }
     cube.current.rotateFace(move);
     const shallowCopy = JSON.parse(JSON.stringify(cube.current.cubeFaces));
     setCubeFaces(shallowCopy);
+    if (scrambleCallback) {
+      scrambleCallback(shallowCopy);
+    }
   }
 
   const resetCube = () => {
