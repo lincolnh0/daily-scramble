@@ -1,11 +1,11 @@
 "use client";
 import Cube from "@/utils/cube";
 
-interface CubeViewerProps {
+interface CubeViewerRenderProps {
   cubeFaces: { [key: string]: string[][] };
 }
 
-export default function CubeViewer2d({cubeFaces}: CubeViewerProps) {
+export default function CubeViewer2d({cubeFaces}: CubeViewerRenderProps) {
 
   const renderFace = (face: string, reverse: boolean = false) => {
     const cubeFace = reverse ? cubeFaces[face].slice(0).reverse() : cubeFaces[face];

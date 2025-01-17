@@ -39,7 +39,7 @@ export default function CubeViewer({rotationCallback, resetCallback, scramble}: 
         {dimension === 2 ? (
             <CubeViewer2d cubeFaces={cubeFaces}/>
         ) : (
-            <CubeViewer3d cubeFaces={cubeFaces} rotationCallback={renderRotation} resetCallback={resetCube}/>
+            <CubeViewer3d cubeFaces={cubeFaces} />
         )}
         {resetCallback && rotationCallback && (
             <CubeControls rotationCallback={renderRotation} resetCallback={resetCube}/>
